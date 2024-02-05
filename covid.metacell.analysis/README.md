@@ -4,3 +4,7 @@ A collection of scripts and associated metadata for regression-based analysis of
 4 scripts are related to maSigPro analysis by cell type for SEACells metacells, random metacells, all cells, and pseudobulked samples.
 1 script is related to analysis of SEACells metacells purity.
 1 Python script for creating metacells by time point.
+
+****all.cells.masigpro.R**
+
+We performed quadratic regression using maSigPro using all single cells. We subset by cell type and grouped cells by time since symptom onset before running the analysis.
