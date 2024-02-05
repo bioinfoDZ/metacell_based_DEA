@@ -43,5 +43,7 @@ This Python script shows the creation of SEACElls metacells for each time point.
 
 This outlines the regression-based analysis we did for each cell type using SEACells generated metacells. Prior to this, we transformed Seurat objects to annData objects for export to Python so that we could use the SEACells algorithm, which was not developed for use in R. This script also includes a variety of plots we generated when exploring individual genes we found to be differentially expressed through time. While we find DEGs for all cell types, we did not further explore some of them due to low overall number of cells or osberved model overfitting.
 
+**time.series.summary.celltype.xlsx**
 
+This excel file contains a varieyt of sheets where we compare random and SEACells metacells DEGs. Most importantly, we use the sheet called "by.protein.class.update" to create a dotplot. We manually input DEGs, their expression trends, p-values, R^2 values, and protein function classification.
 
