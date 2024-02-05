@@ -334,7 +334,7 @@ design <- make.design.matrix(exp.data, degree = 2, time.col = 1,
 #masigpro for rna seq 
 library(MASS)
 NBp <- p.vector(covid.masigpro, design, counts=F, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6)
 NBt <- T.fit(NBp)
 get<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get$summary
@@ -408,7 +408,7 @@ for (type in cell.types) {
 #Naive T cells
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`Naive T cells`, design.list$`Naive T cells`, counts=FALSE, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6)
 NBt <- T.fit(NBp)
 get.naive.t.cells <-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.naive.t.cells$summary
@@ -420,7 +420,7 @@ get.naive.t.cells$summary[get.naive.t.cells$summary %in% get.naive.t.cells$summa
 #Activated CD4 T Cells
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`Activated CD4 T cells`, design.list$`Activated CD4 T cells`, counts=FALSE, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6)
 NBt <- T.fit(NBp)
 get.activated.cd4.t.cells <-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.activated.cd4.t.cells$summary
@@ -431,7 +431,7 @@ View(as.data.frame(see.genes$cut))
 # NKs
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$NKs, design.list$`NKs`, counts=FALSE, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6)
 NBt <- T.fit(NBp)
 get.NKs <-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.NKs$summary
@@ -442,7 +442,7 @@ View(as.data.frame(see.genes$cut))
 # `Naive B cells`
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`Naive B cells`, design.list$`Naive B cells`, counts=FALSE, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6) 
 NBt <- T.fit(NBp)
 get.naive.b.cells<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.naive.b.cells$summary
@@ -454,7 +454,7 @@ View(as.data.frame(see.genes$cut))
 # MAIT
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$MAIT, design.list$MAIT, counts=FALSE, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6)
 NBt <- T.fit(NBp)
 get.MAIT<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.MAIT$summary
@@ -467,7 +467,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`Cytotoxic CD8 T cells`,
                 design.list$`Cytotoxic CD8 T cells`, counts=FALSE, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6) 
 NBt <- T.fit(NBp)
 get.Cytotoxic.CD8.T.cells<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.Cytotoxic.CD8.T.cells$summary
@@ -483,7 +483,7 @@ design.list$`Memory B cells` <- make.design.matrix(exp.data.list$`Memory B cells
                                                    repl.col = 2, group.cols = 3)
 NBp <- p.vector(covid.masigpro.list$`Memory B cells`,
                 design.list$`Memory B cells`, counts=FALSE, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6) 
 NBt <- T.fit(NBp)
 get.Memory.B.cells<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.Memory.B.cells$summary
@@ -496,7 +496,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`Cycling T cells`,
                 design.list$`Cycling T cells`, counts=FALSE, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6) 
 NBt <- T.fit(NBp)
 get.Cycling.T.cells<-get.siggenes(NBt, vars="all", rsq = 0.7)
 get.Cycling.T.cells$summary
@@ -509,7 +509,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`XCL+ NKs`,
                 design.list$`XCL+ NKs`, counts=FALSE, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6) 
 NBt <- T.fit(NBp)
 get.XCL.NKs<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.XCL.NKs$summary
@@ -522,7 +522,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$Plasma,
                 design.list$Plasma, counts=FALSE, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6) 
 NBt <- T.fit(NBp)
 get.Plasma<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.Plasma$summary
@@ -535,7 +535,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$Monocytes,
                 design.list$Monocytes, counts=FALSE, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6) 
 NBt <- T.fit(NBp)
 get.Monocytes<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.Monocytes$summary
@@ -548,7 +548,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`Stem cells`,
                 design.list$`Stem cells`, counts=FALSE, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6) 
 NBt <- T.fit(NBp)
 get.stem.cells<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.stem.cells$summary
@@ -561,7 +561,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$Megakaryocytes,
                 design.list$Megakaryocytes, counts=FALSE, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6) 
 NBt <- T.fit(NBp)
 get.Megakaryocytes<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.Megakaryocytes$summary
@@ -574,7 +574,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`Cycling Plasma`,
                 design.list$`Cycling Plasma`, counts=FALSE, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6)
 NBt <- T.fit(NBp)
 get.Cycling.Plasma<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.Cycling.Plasma$summary
@@ -587,7 +587,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$DCs,
                 design.list$DCs, counts=FALSE, 
-                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
+                min.obs = 6) 
 NBt <- T.fit(NBp)
 get.DCs<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.DCs$summary
