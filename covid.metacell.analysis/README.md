@@ -41,7 +41,7 @@ This Python script shows the creation of SEACElls metacells for each time point.
 
 **seacells.masigpro.allcovid.1.2024.R**
 
-This outlines the regression-based analysis we did for each cell type using SEACells generated metacells. Prior to this, transformed Seurat objects to annData objects for export to Python so that we could use the SEACells algorithm, which was not developed for use in R. This script also includes a variety of plots we generated when exploring individual genes we found to be differentially expressed through time. While we find DEGs for all cell types, we did not further explore some of them due to low overall number of cells or osberved model overfitting.
+This outlines the regression-based analysis we did for each cell type using SEACells generated metacells. Prior to this, we transformed Seurat objects to annData objects for export to Python so that we could use the SEACells algorithm, which was not developed for use in R. This script also includes a variety of plots we generated when exploring individual genes we found to be differentially expressed through time. While we find DEGs for all cell types, we did not further explore some of them due to low overall number of cells or osberved model overfitting.
 
 
 
