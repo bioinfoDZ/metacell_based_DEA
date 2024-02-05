@@ -33,7 +33,7 @@ We pseudobulked by cell type, sample, and time point before using maSigPro to fi
 
 **puirty.tests.R**
 
-In this script, we subset SEACElls metacells based on their purity score and compare the effect this has on variance across genes
+In this script, we subset SEACElls metacells based on their purity score and compare the effect this has on variance across genes.
 
 **seacells.allcovid.ipynb**
 
