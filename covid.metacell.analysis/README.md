@@ -11,7 +11,7 @@ Updates to packages, such as Seurat, may mean that some code needs slight modifi
 
 We describe the contents of each file below:
 
-****all.cells.masigpro.R**
+**all.cells.masigpro.R**
 
 We performed quadratic regression using maSigPro using all single cells. We subset by cell type and grouped cells by time since symptom onset before running the analysis to find differentially expressed gene through time.
 
