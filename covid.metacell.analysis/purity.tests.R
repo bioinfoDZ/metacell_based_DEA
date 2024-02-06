@@ -184,7 +184,7 @@ cell.types <- c("Cytotoxic CD8 T cells", "Naive T cells", "NKs",
                 "Memory B cells", "XCL+ NKs", "MAIT", "Cycling T cells")
 # Create  empty lists to store data frames
 exp.data.list <- list()
-covid.masigpro.list <- list()
+covid.masigpro.list.pure <- list()
 design.list <- list()
 
 # Loop through cell types
@@ -217,14 +217,14 @@ for (type in cell.types) {
   exp.data.type <- exp.data.type[, colSums(exp.data.type) != 0]
   
   # Remove specific columns (e.g., columns 3 and 4)
-  exp.data.type <- exp.data.type[exp.data.type$purity>0.9,] 
+  exp.data.type <- exp.data.type[exp.data.type$purity>0.95,] 
   exp.data.type <- exp.data.type[, -c(1, 4)]
   
   # Subset covid.masigpro based on column names
   covid.masigpro.type <- covid.masigpro[, rownames(exp.data.type)]
   
   # Store the data frames in the lists
-  covid.masigpro.list[[type]] <- covid.masigpro.type
+  covid.masigpro.list.pure[[type]] <- as.data.frame(covid.masigpro.type)
   
   exp.data.list[[type]] <- exp.data.type
   
@@ -240,7 +240,7 @@ for (type in cell.types) {
 
 get.list.pure <- list()
 for (type in cell.types) {
-  NBp <- p.vector(covid.masigpro.list[[type]], design.list[[type]], counts=FALSE, 
+  NBp <- p.vector(covid.masigpro.list.pure[[type]], design.list[[type]], counts=FALSE, 
                   min.obs = 6)
   NBt <- T.fit(NBp)
   get <- get.siggenes(NBt, vars="all", rsq = 0.5)
@@ -250,7 +250,7 @@ for (type in cell.types) {
 #find number of metacells per cell type
 num.metacells.pure <- list()
 for (type in cell.types) {
-  num.metacells.pure[[type]] <- ncol(covid.masigpro.list[[type]])
+  num.metacells.pure[[type]] <- ncol(covid.masigpro.list.pure[[type]])
 } 
 
 
