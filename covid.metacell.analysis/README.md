@@ -35,6 +35,10 @@ We pseudobulked by cell type, sample, and time point before using maSigPro to fi
 
 In this script, we subset SEACElls metacells based on their purity score and compare the effect this has on variance across genes.
 
+**sd.plots.R**
+
+Script for calculating standard devation across all genes per cell type. We then plotted these SDs as a boxplot for each method.
+
 **seacells.allcovid.ipynb**
 
 This Python script shows the creation of SEACElls metacells for each time point. Note that the output (metacell assignemnts) will differ slightly with each run due to the SEACell algorithm's random initialization step.
