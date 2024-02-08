@@ -334,7 +334,7 @@ design <- make.design.matrix(exp.data, degree = 2, time.col = 1,
 #masigpro for rna seq 
 library(MASS)
 NBp <- p.vector(covid.masigpro, design, counts=F, 
-                min.obs = 6)
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get$summary
@@ -408,7 +408,7 @@ for (type in cell.types) {
 #Naive T cells
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`Naive T cells`, design.list$`Naive T cells`, counts=FALSE, 
-                min.obs = 6)
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get.naive.t.cells <-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.naive.t.cells$summary
@@ -420,7 +420,7 @@ get.naive.t.cells$summary[get.naive.t.cells$summary %in% get.naive.t.cells$summa
 #Activated CD4 T Cells
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`Activated CD4 T cells`, design.list$`Activated CD4 T cells`, counts=FALSE, 
-                min.obs = 6)
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get.activated.cd4.t.cells <-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.activated.cd4.t.cells$summary
@@ -431,7 +431,7 @@ View(as.data.frame(see.genes$cut))
 # NKs
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$NKs, design.list$`NKs`, counts=FALSE, 
-                min.obs = 6)
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get.NKs <-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.NKs$summary
@@ -442,7 +442,7 @@ View(as.data.frame(see.genes$cut))
 # `Naive B cells`
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`Naive B cells`, design.list$`Naive B cells`, counts=FALSE, 
-                min.obs = 6) 
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get.naive.b.cells<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.naive.b.cells$summary
@@ -454,7 +454,7 @@ View(as.data.frame(see.genes$cut))
 # MAIT
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$MAIT, design.list$MAIT, counts=FALSE, 
-                min.obs = 6)
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get.MAIT<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.MAIT$summary
@@ -467,7 +467,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`Cytotoxic CD8 T cells`,
                 design.list$`Cytotoxic CD8 T cells`, counts=FALSE, 
-                min.obs = 6) 
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get.Cytotoxic.CD8.T.cells<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.Cytotoxic.CD8.T.cells$summary
@@ -483,7 +483,7 @@ design.list$`Memory B cells` <- make.design.matrix(exp.data.list$`Memory B cells
                                                    repl.col = 2, group.cols = 3)
 NBp <- p.vector(covid.masigpro.list$`Memory B cells`,
                 design.list$`Memory B cells`, counts=FALSE, 
-                min.obs = 6) 
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get.Memory.B.cells<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.Memory.B.cells$summary
@@ -496,7 +496,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`Cycling T cells`,
                 design.list$`Cycling T cells`, counts=FALSE, 
-                min.obs = 6) 
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get.Cycling.T.cells<-get.siggenes(NBt, vars="all", rsq = 0.7)
 get.Cycling.T.cells$summary
@@ -509,7 +509,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`XCL+ NKs`,
                 design.list$`XCL+ NKs`, counts=FALSE, 
-                min.obs = 6) 
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get.XCL.NKs<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.XCL.NKs$summary
@@ -522,7 +522,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$Plasma,
                 design.list$Plasma, counts=FALSE, 
-                min.obs = 6) 
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get.Plasma<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.Plasma$summary
@@ -535,7 +535,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$Monocytes,
                 design.list$Monocytes, counts=FALSE, 
-                min.obs = 6) 
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get.Monocytes<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.Monocytes$summary
@@ -548,7 +548,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`Stem cells`,
                 design.list$`Stem cells`, counts=FALSE, 
-                min.obs = 6) 
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get.stem.cells<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.stem.cells$summary
@@ -561,7 +561,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$Megakaryocytes,
                 design.list$Megakaryocytes, counts=FALSE, 
-                min.obs = 6) 
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get.Megakaryocytes<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.Megakaryocytes$summary
@@ -574,7 +574,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$`Cycling Plasma`,
                 design.list$`Cycling Plasma`, counts=FALSE, 
-                min.obs = 6)
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get.Cycling.Plasma<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.Cycling.Plasma$summary
@@ -587,7 +587,7 @@ View(as.data.frame(see.genes$cut))
 library(MASS)
 NBp <- p.vector(covid.masigpro.list$DCs,
                 design.list$DCs, counts=FALSE, 
-                min.obs = 6) 
+                min.obs = 6) #min obs should be degree + 1 x groups + 1 (3x2 for us)
 NBt <- T.fit(NBp)
 get.DCs<-get.siggenes(NBt, vars="all", rsq = 0.5)
 get.DCs$summary
@@ -2179,6 +2179,10 @@ t.test(subset(a$data, time == "3" & cell.type =="Activated CD4 T cells")$EIF3H,
        subset(b$data, cell.type =="Activated CD4 T cells")$EIF3H,
        alternative = "two.sided", paired = F, var.equal = T)
 
+t.test(subset(a$data, time == "28" & cell.type =="Activated CD4 T cells")$EIF3H,
+       subset(b$data, cell.type =="Activated CD4 T cells")$EIF3H,
+       alternative = "two.sided", paired = F, var.equal = T)
+
 # for OASL ####
 
 # define cell type colors 
@@ -2272,6 +2276,10 @@ OASL <- grid.arrange(b, a, widths = c(0.4, 2), nrow= 1, ncol = 2,
 
 # t test
 t.test(subset(a$data, time == "3" & cell.type =="Naive T cells")$OASL,
+       subset(b$data, cell.type =="Naive T cells")$OASL,
+       alternative = "two.sided", paired = F, var.equal = T)
+
+t.test(subset(a$data, time == "28" & cell.type =="Naive T cells")$OASL,
        subset(b$data, cell.type =="Naive T cells")$OASL,
        alternative = "two.sided", paired = F, var.equal = T)
 
@@ -2393,6 +2401,19 @@ t.test(subset(a$data, time == "3" & cell.type =="NKs")$RSAD2,
        subset(b$data, cell.type =="NKs")$RSAD2,
        alternative = "two.sided", paired = F, var.equal = T)
 
+t.test(subset(a$data, time == "28" & cell.type =="Activated CD4 T cells")$RSAD2,
+       subset(b$data, cell.type =="Activated CD4 T cells")$RSAD2,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="Cytotoxic CD8 T cells")$RSAD2,
+       subset(b$data, cell.type =="Cytotoxic CD8 T cells")$RSAD2,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="Naive B cells")$RSAD2,
+       subset(b$data, cell.type =="Naive B cells")$RSAD2,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="NKs")$RSAD2,
+       subset(b$data, cell.type =="NKs")$RSAD2,
+       alternative = "two.sided", paired = F, var.equal = T)
+
 # for ISG20 ####
 
 # define cell type colors 
@@ -2503,6 +2524,16 @@ t.test(subset(a$data, time == "3" & cell.type =="NKs")$ISG20,
        subset(b$data, cell.type =="NKs")$ISG20,
        alternative = "two.sided", paired = F, var.equal = T)
 
+t.test(subset(a$data, time == "28" & cell.type =="Activated CD4 T cells")$ISG20,
+       subset(b$data, cell.type =="Activated CD4 T cells")$ISG20,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="Cytotoxic CD8 T cells")$ISG20,
+       subset(b$data, cell.type =="Cytotoxic CD8 T cells")$ISG20,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="NKs")$ISG20,
+       subset(b$data, cell.type =="NKs")$ISG20,
+       alternative = "two.sided", paired = F, var.equal = T)
+
 # for IFI16 ####
 
 # define cell type colors 
@@ -2599,100 +2630,7 @@ t.test(subset(a$data, time == "3" & cell.type =="Cytotoxic CD8 T cells")$IFI16,
        subset(b$data, cell.type =="Cytotoxic CD8 T cells")$IFI16,
        alternative = "two.sided", paired = F, var.equal = T)
 
-
-# for IFIT1 ####
-
-# define cell type colors 
-cell_colors <- c(#"Activated CD4 T cells" = "#88CCEE",
-  #"Cylcing T cells" = "#CC6677",
-  "Cytotoxic CD8 T cells" = "#DDCC77"#,
-  #"Naive B cells" = "#117733",
-  #"Naive T cells" = "#332288"#,
-  #"NKs" = "#AA4499"#,
-  # "Plasma"= "#44AA99",
-  # "XCL+ NKs" = "#999933",
-  # "DCs" = "#882255",
-  # "Megakaryocytes" = "#661100",
-  # "Stem cells" = "#6699CC"
-)
-
-by.type <-as.data.frame(t(covid.masigpro[covid.genes,]))
-by.type <- by.type[,order(colnames(by.type))]
-by.type$cell.type <- exp.data$cell.type
-by.type$time <- exp.data$time
-by.type <- by.type[by.type$cell.type %in% c(
-  "Cytotoxic CD8 T cells"
-), ]
-
-covid.pb.controls1.sig.genes <- covid.pb.controls1[rownames(covid.pb.controls1) %in% covid.genes,]
-covid.pb.controls1.sig.genes <- t(covid.pb.controls1.sig.genes)
-covid.pb.controls1.sig.genes <- covid.pb.controls1.sig.genes[,order(colnames(covid.pb.controls1.sig.genes))]
-covid.pb.controls1.sig.genes <- data.frame(cell.type = rownames(covid.pb.controls1.sig.genes), covid.pb.controls1.sig.genes)
-covid.pb.controls1.sig.genes[,16] <- rep("Baseline", times = 15)
-colnames(covid.pb.controls1.sig.genes)[16] = "time"
-rownames(covid.pb.controls1.sig.genes) <- paste("Ctrl", 1:15, sep = ".")
-covid.pb.controls1.sig.genes <- covid.pb.controls1.sig.genes[covid.pb.controls1.sig.genes$cell.type %in% c(
-  
-  "Cytotoxic CD8 T cells"
-), ]
-
-covid.pb.controls2.sig.genes <- covid.pb.controls2[rownames(covid.pb.controls2) %in% covid.genes,]
-covid.pb.controls2.sig.genes <- t(covid.pb.controls2.sig.genes)
-covid.pb.controls2.sig.genes <- covid.pb.controls2.sig.genes[,order(colnames(covid.pb.controls2.sig.genes))]
-covid.pb.controls2.sig.genes <- data.frame(cell.type = rownames(covid.pb.controls2.sig.genes), covid.pb.controls2.sig.genes)
-covid.pb.controls2.sig.genes[,16] <- rep("Baseline", times = 15)
-colnames(covid.pb.controls2.sig.genes)[16] = "time"
-rownames(covid.pb.controls2.sig.genes) <- paste("Ctrl", 1:15, sep = ".")
-covid.pb.controls2.sig.genes <- covid.pb.controls2.sig.genes[covid.pb.controls2.sig.genes$cell.type %in% c(
-  
-  "Cytotoxic CD8 T cells"
-), ]
-
-covid.pb.controls3.sig.genes <- covid.pb.controls3[rownames(covid.pb.controls3) %in% covid.genes,]
-covid.pb.controls3.sig.genes <- t(covid.pb.controls3.sig.genes)
-covid.pb.controls3.sig.genes <- covid.pb.controls3.sig.genes[,order(colnames(covid.pb.controls3.sig.genes))]
-covid.pb.controls3.sig.genes <- data.frame(cell.type = rownames(covid.pb.controls3.sig.genes), covid.pb.controls3.sig.genes)
-covid.pb.controls3.sig.genes[,16] <- rep("Baseline", times = 15)
-colnames(covid.pb.controls3.sig.genes)[16] = "time"
-rownames(covid.pb.controls3.sig.genes) <- paste("Ctrl", 1:15, sep = ".")
-covid.pb.controls3.sig.genes <- covid.pb.controls3.sig.genes[covid.pb.controls3.sig.genes$cell.type %in% c(
-  
-  "Cytotoxic CD8 T cells"
-), ]
-
-covid.pb.controls.sig.genes <- rbind(covid.pb.controls1.sig.genes,
-                                     covid.pb.controls2.sig.genes, 
-                                     covid.pb.controls3.sig.genes)
-
-a <-ggplot(by.type, aes(x = time, y = IFI16, 
-                        color= cell.type))+
-  geom_point(size=2)+
-  ylab("") + xlab("Days Since Symptom Onset")+labs(fill="Cell Type")+
-  scale_color_manual(values = cell_colors)+
-  stat_smooth(method = "lm", formula = y ~ x + I(x^2), size = 1, se= F)+
-  scale_x_continuous(n.breaks = 10)+
-  theme(legend.position = "none",
-        axis.title.y = element_blank(),
-        axis.text.y = element_blank(),
-        axis.ticks = element_blank(),
-        plot.margin = unit(c(1,1,1,-1.75), "mm"))+
-  scale_y_continuous(limits = c(-.1,max(by.type$IFI16, covid.pb.controls.sig.genes$IFI16)),labels = scales::number_format(accuracy = 0.01))
-
-b <-ggplot(covid.pb.controls.sig.genes, aes(x = time, y = IFI16, color= cell.type))+
-  geom_point(size=2)+
-  ylab("IFI16 Expression") + xlab("")+labs(fill="Cell Type")+
-  scale_color_manual(values = cell_colors)+
-  theme(
-    legend.position = "none",
-    plot.margin = unit(c(1,1,1,1), "mm"))+
-  scale_y_continuous(limits = c(-.1,max(by.type$IFI16,covid.pb.controls.sig.genes$IFI16)),labels = scales::number_format(accuracy = 0.01))
-
-IFI16 <- grid.arrange(b, a, widths = c(0.4, 2), nrow= 1, ncol = 2, 
-                      padding = unit(0, "lines"))
-
-
-# t test
-t.test(subset(a$data, time == "3" & cell.type =="Cytotoxic CD8 T cells")$IFI16,
+t.test(subset(a$data, time == "28" & cell.type =="Cytotoxic CD8 T cells")$IFI16,
        subset(b$data, cell.type =="Cytotoxic CD8 T cells")$IFI16,
        alternative = "two.sided", paired = F, var.equal = T)
 
@@ -2804,13 +2742,26 @@ t.test(subset(a$data, time == "3" & cell.type =="Activated CD4 T cells")$IFIT1,
        subset(b$data, cell.type =="Activated CD4 T cells")$IFIT1,
        alternative = "two.sided", paired = F, var.equal = T)
 t.test(subset(a$data, time == "3" & cell.type =="Cytotoxic CD8 T cells")$IFIT1,
-       subset(b$data, cell.type =="Cytotoxic CD8 T cells")$RSAD2,
+       subset(b$data, cell.type =="Cytotoxic CD8 T cells")$IFIT1,
        alternative = "two.sided", paired = F, var.equal = T)
 t.test(subset(a$data, time == "3" & cell.type =="Naive B cells")$IFIT1,
-       subset(b$data, cell.type =="Naive B cells")$RSAD2,
+       subset(b$data, cell.type =="Naive B cells")$IFIT1,
        alternative = "two.sided", paired = F, var.equal = T)
 t.test(subset(a$data, time == "3" & cell.type =="NKs")$IFIT1,
-       subset(b$data, cell.type =="NKs")$RSAD2,
+       subset(b$data, cell.type =="NKs")$IFIT1,
+       alternative = "two.sided", paired = F, var.equal = T)
+
+t.test(subset(a$data, time == "28" & cell.type =="Activated CD4 T cells")$IFIT1,
+       subset(b$data, cell.type =="Activated CD4 T cells")$IFIT1,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="Cytotoxic CD8 T cells")$IFIT1,
+       subset(b$data, cell.type =="Cytotoxic CD8 T cells")$IFIT1,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="Naive B cells")$IFIT1,
+       subset(b$data, cell.type =="Naive B cells")$IFIT1,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="NKs")$IFIT1,
+       subset(b$data, cell.type =="NKs")$IFIT1,
        alternative = "two.sided", paired = F, var.equal = T)
 
 
@@ -2909,214 +2860,7 @@ t.test(subset(a$data, time == "3" & cell.type =="Activated CD4 T cells")$CDK9,
        subset(b$data, cell.type =="Activated CD4 T cells")$CDK9,
        alternative = "two.sided", paired = F, var.equal = T)
 
-# for IFIT1 ####
-
-# define cell type colors 
-cell_colors <- c("Activated CD4 T cells" = "#88CCEE",
-                 #"Cylcing T cells" = "#CC6677",
-                 "Cytotoxic CD8 T cells" = "#DDCC77",
-                 "Naive B cells" = "#117733",
-                 #"Naive T cells" = "#332288"#,
-                 "NKs" = "#AA4499"#,
-                 # "Plasma"= "#44AA99",
-                 # "XCL+ NKs" = "#999933",
-                 # "DCs" = "#882255",
-                 # "Megakaryocytes" = "#661100",
-                 # "Stem cells" = "#6699CC"
-)
-
-by.type <-as.data.frame(t(covid.masigpro[covid.genes,]))
-by.type <- by.type[,order(colnames(by.type))]
-by.type$cell.type <- exp.data$cell.type
-by.type$time <- exp.data$time
-by.type <- by.type[by.type$cell.type %in% c(
-  "Activated CD4 T cells",
-  "Cytotoxic CD8 T cells",
-  "Naive B cells",
-  "NKs"
-), ]
-
-covid.pb.controls1.sig.genes <- covid.pb.controls1[rownames(covid.pb.controls1) %in% covid.genes,]
-covid.pb.controls1.sig.genes <- t(covid.pb.controls1.sig.genes)
-covid.pb.controls1.sig.genes <- covid.pb.controls1.sig.genes[,order(colnames(covid.pb.controls1.sig.genes))]
-covid.pb.controls1.sig.genes <- data.frame(cell.type = rownames(covid.pb.controls1.sig.genes), covid.pb.controls1.sig.genes)
-covid.pb.controls1.sig.genes[,16] <- rep("Baseline", times = 15)
-colnames(covid.pb.controls1.sig.genes)[16] = "time"
-rownames(covid.pb.controls1.sig.genes) <- paste("Ctrl", 1:15, sep = ".")
-covid.pb.controls1.sig.genes <- covid.pb.controls1.sig.genes[covid.pb.controls1.sig.genes$cell.type %in% c(
-  
-  "Activated CD4 T cells",
-  "Cytotoxic CD8 T cells",
-  "Naive B cells",
-  "NKs"
-), ]
-
-covid.pb.controls2.sig.genes <- covid.pb.controls2[rownames(covid.pb.controls2) %in% covid.genes,]
-covid.pb.controls2.sig.genes <- t(covid.pb.controls2.sig.genes)
-covid.pb.controls2.sig.genes <- covid.pb.controls2.sig.genes[,order(colnames(covid.pb.controls2.sig.genes))]
-covid.pb.controls2.sig.genes <- data.frame(cell.type = rownames(covid.pb.controls2.sig.genes), covid.pb.controls2.sig.genes)
-covid.pb.controls2.sig.genes[,16] <- rep("Baseline", times = 15)
-colnames(covid.pb.controls2.sig.genes)[16] = "time"
-rownames(covid.pb.controls2.sig.genes) <- paste("Ctrl", 1:15, sep = ".")
-covid.pb.controls2.sig.genes <- covid.pb.controls2.sig.genes[covid.pb.controls2.sig.genes$cell.type %in% c(
-  
-  "Activated CD4 T cells",
-  "Cytotoxic CD8 T cells",
-  "Naive B cells",
-  "NKs"
-), ]
-
-covid.pb.controls3.sig.genes <- covid.pb.controls3[rownames(covid.pb.controls3) %in% covid.genes,]
-covid.pb.controls3.sig.genes <- t(covid.pb.controls3.sig.genes)
-covid.pb.controls3.sig.genes <- covid.pb.controls3.sig.genes[,order(colnames(covid.pb.controls3.sig.genes))]
-covid.pb.controls3.sig.genes <- data.frame(cell.type = rownames(covid.pb.controls3.sig.genes), covid.pb.controls3.sig.genes)
-covid.pb.controls3.sig.genes[,16] <- rep("Baseline", times = 15)
-colnames(covid.pb.controls3.sig.genes)[16] = "time"
-rownames(covid.pb.controls3.sig.genes) <- paste("Ctrl", 1:15, sep = ".")
-covid.pb.controls3.sig.genes <- covid.pb.controls3.sig.genes[covid.pb.controls3.sig.genes$cell.type %in% c(
-  
-  "Activated CD4 T cells",
-  "Cytotoxic CD8 T cells",
-  "Naive B cells",
-  "NKs"
-), ]
-
-covid.pb.controls.sig.genes <- rbind(covid.pb.controls1.sig.genes,
-                                     covid.pb.controls2.sig.genes, 
-                                     covid.pb.controls3.sig.genes)
-
-a <-ggplot(by.type, aes(x = time, y = IFIT1, 
-                        color= cell.type))+
-  geom_point(size=2)+
-  ylab("") + xlab("Days Since Symptom Onset")+labs(fill="Cell Type")+
-  scale_color_manual(values = cell_colors)+
-  stat_smooth(method = "lm", formula = y ~ x + I(x^2), size = 1, se= F)+
-  scale_x_continuous(n.breaks = 10)+
-  theme(legend.position = "none",
-        axis.title.y = element_blank(),
-        axis.text.y = element_blank(),
-        axis.ticks = element_blank(),
-        plot.margin = unit(c(1,1,1,-1.75), "mm"))+
-  scale_y_continuous(limits = c(-.1,max(by.type$IFIT1, covid.pb.controls.sig.genes$IFIT1)),labels = scales::number_format(accuracy = 0.01))
-
-b <-ggplot(covid.pb.controls.sig.genes, aes(x = time, y = IFIT1, color= cell.type))+
-  geom_point(size=2)+
-  ylab("IFIT1 Expression") + xlab("")+labs(fill="Cell Type")+
-  scale_color_manual(values = cell_colors)+
-  theme(
-    legend.position = "none",
-    plot.margin = unit(c(1,1,1,1), "mm"))+
-  scale_y_continuous(limits = c(-.1,max(by.type$IFIT1,covid.pb.controls.sig.genes$IFIT1)),labels = scales::number_format(accuracy = 0.01))
-
-IFIT1 <- grid.arrange(b, a, widths = c(0.4, 2), nrow= 1, ncol = 2, 
-                      padding = unit(0, "lines"))
-
-# t test
-t.test(subset(a$data, time == "3" & cell.type =="Activated CD4 T cells")$IFIT1,
-       subset(b$data, cell.type =="Activated CD4 T cells")$IFIT1,
-       alternative = "two.sided", paired = F, var.equal = T)
-t.test(subset(a$data, time == "3" & cell.type =="Cytotoxic CD8 T cells")$IFIT1,
-       subset(b$data, cell.type =="Cytotoxic CD8 T cells")$RSAD2,
-       alternative = "two.sided", paired = F, var.equal = T)
-t.test(subset(a$data, time == "3" & cell.type =="Naive B cells")$IFIT1,
-       subset(b$data, cell.type =="Naive B cells")$RSAD2,
-       alternative = "two.sided", paired = F, var.equal = T)
-t.test(subset(a$data, time == "3" & cell.type =="NKs")$IFIT1,
-       subset(b$data, cell.type =="NKs")$RSAD2,
-       alternative = "two.sided", paired = F, var.equal = T)
-
-# for CDK9 ####
-
-# define cell type colors 
-cell_colors <- c("Activated CD4 T cells" = "#88CCEE"#,
-  #"Cylcing T cells" = "#CC6677",
-  #"Cytotoxic CD8 T cells" = "#DDCC77"#,
-  #"Naive B cells" = "#117733",
-  #"Naive T cells" = "#332288"#,
-  #"NKs" = "#AA4499"#,
-  # "Plasma"= "#44AA99",
-  # "XCL+ NKs" = "#999933",
-  # "DCs" = "#882255",
-  # "Megakaryocytes" = "#661100",
-  # "Stem cells" = "#6699CC"
-)
-
-by.type <-as.data.frame(t(covid.masigpro[covid.genes,]))
-by.type <- by.type[,order(colnames(by.type))]
-by.type$cell.type <- exp.data$cell.type
-by.type$time <- exp.data$time
-by.type <- by.type[by.type$cell.type %in% c(
-  "Activated CD4 T cells"
-), ]
-
-covid.pb.controls1.sig.genes <- covid.pb.controls1[rownames(covid.pb.controls1) %in% covid.genes,]
-covid.pb.controls1.sig.genes <- t(covid.pb.controls1.sig.genes)
-covid.pb.controls1.sig.genes <- covid.pb.controls1.sig.genes[,order(colnames(covid.pb.controls1.sig.genes))]
-covid.pb.controls1.sig.genes <- data.frame(cell.type = rownames(covid.pb.controls1.sig.genes), covid.pb.controls1.sig.genes)
-covid.pb.controls1.sig.genes[,16] <- rep("Baseline", times = 15)
-colnames(covid.pb.controls1.sig.genes)[16] = "time"
-rownames(covid.pb.controls1.sig.genes) <- paste("Ctrl", 1:15, sep = ".")
-covid.pb.controls1.sig.genes <- covid.pb.controls1.sig.genes[covid.pb.controls1.sig.genes$cell.type %in% c(
-  
-  "Activated CD4 T cells"
-), ]
-
-covid.pb.controls2.sig.genes <- covid.pb.controls2[rownames(covid.pb.controls2) %in% covid.genes,]
-covid.pb.controls2.sig.genes <- t(covid.pb.controls2.sig.genes)
-covid.pb.controls2.sig.genes <- covid.pb.controls2.sig.genes[,order(colnames(covid.pb.controls2.sig.genes))]
-covid.pb.controls2.sig.genes <- data.frame(cell.type = rownames(covid.pb.controls2.sig.genes), covid.pb.controls2.sig.genes)
-covid.pb.controls2.sig.genes[,16] <- rep("Baseline", times = 15)
-colnames(covid.pb.controls2.sig.genes)[16] = "time"
-rownames(covid.pb.controls2.sig.genes) <- paste("Ctrl", 1:15, sep = ".")
-covid.pb.controls2.sig.genes <- covid.pb.controls2.sig.genes[covid.pb.controls2.sig.genes$cell.type %in% c(
-  
-  "Activated CD4 T cells"
-), ]
-
-covid.pb.controls3.sig.genes <- covid.pb.controls3[rownames(covid.pb.controls3) %in% covid.genes,]
-covid.pb.controls3.sig.genes <- t(covid.pb.controls3.sig.genes)
-covid.pb.controls3.sig.genes <- covid.pb.controls3.sig.genes[,order(colnames(covid.pb.controls3.sig.genes))]
-covid.pb.controls3.sig.genes <- data.frame(cell.type = rownames(covid.pb.controls3.sig.genes), covid.pb.controls3.sig.genes)
-covid.pb.controls3.sig.genes[,16] <- rep("Baseline", times = 15)
-colnames(covid.pb.controls3.sig.genes)[16] = "time"
-rownames(covid.pb.controls3.sig.genes) <- paste("Ctrl", 1:15, sep = ".")
-covid.pb.controls3.sig.genes <- covid.pb.controls3.sig.genes[covid.pb.controls3.sig.genes$cell.type %in% c(
-  
-  "Activated CD4 T cells"
-), ]
-
-covid.pb.controls.sig.genes <- rbind(covid.pb.controls1.sig.genes,
-                                     covid.pb.controls2.sig.genes, 
-                                     covid.pb.controls3.sig.genes)
-
-a <-ggplot(by.type, aes(x = time, y = CDK9, 
-                        color= cell.type))+
-  geom_point(size=2)+
-  ylab("") + xlab("Days Since Symptom Onset")+labs(fill="Cell Type")+
-  scale_color_manual(values = cell_colors)+
-  stat_smooth(method = "lm", formula = y ~ x + I(x^2), size = 1, se= F)+
-  scale_x_continuous(n.breaks = 10)+
-  theme(legend.position = "none",
-        axis.title.y = element_blank(),
-        axis.text.y = element_blank(),
-        axis.ticks = element_blank(),
-        plot.margin = unit(c(1,1,1,-1.75), "mm"))+
-  scale_y_continuous(limits = c(-.1,max(by.type$CDK9, covid.pb.controls.sig.genes$CDK9)),labels = scales::number_format(accuracy = 0.01))
-
-b <-ggplot(covid.pb.controls.sig.genes, aes(x = time, y = CDK9, color= cell.type))+
-  geom_point(size=2)+
-  ylab("CDK9 Expression") + xlab("")+labs(fill="Cell Type")+
-  scale_color_manual(values = cell_colors)+
-  theme(
-    legend.position = "none",
-    plot.margin = unit(c(1,1,1,1), "mm"))+
-  scale_y_continuous(limits = c(-.1,max(by.type$CDK9,covid.pb.controls.sig.genes$CDK9)),labels = scales::number_format(accuracy = 0.01))
-
-CDK9 <- grid.arrange(b, a, widths = c(0.4, 2), nrow= 1, ncol = 2, 
-                       padding = unit(0, "lines"))
-
-# t test
-t.test(subset(a$data, time == "3" & cell.type =="Activated CD4 T cells")$CDK9,
+t.test(subset(a$data, time == "28" & cell.type =="Activated CD4 T cells")$CDK9,
        subset(b$data, cell.type =="Activated CD4 T cells")$CDK9,
        alternative = "two.sided", paired = F, var.equal = T)
 
@@ -3216,6 +2960,10 @@ t.test(subset(a$data, time == "3" & cell.type =="Cytotoxic CD8 T cells")$CX3CR1,
        subset(b$data, cell.type =="Cytotoxic CD8 T cells")$CX3CR1,
        alternative = "two.sided", paired = F, var.equal = T)
 
+t.test(subset(a$data, time == "28" & cell.type =="Cytotoxic CD8 T cells")$CX3CR1,
+       subset(b$data, cell.type =="Cytotoxic CD8 T cells")$CX3CR1,
+       alternative = "two.sided", paired = F, var.equal = T)
+
 # for TNFRSF13C ####
 
 # define cell type colors 
@@ -3308,6 +3056,10 @@ TNFRSF13C <- grid.arrange(b, a, widths = c(0.4, 2), nrow= 1, ncol = 2,
 
 # t test
 t.test(subset(a$data, time == "3" & cell.type =="Activated CD4 T cells")$TNFRSF13C,
+       subset(b$data, cell.type =="Activated CD4 T cells")$TNFRSF13C,
+       alternative = "two.sided", paired = F, var.equal = T)
+
+t.test(subset(a$data, time == "28" & cell.type =="Activated CD4 T cells")$TNFRSF13C,
        subset(b$data, cell.type =="Activated CD4 T cells")$TNFRSF13C,
        alternative = "two.sided", paired = F, var.equal = T)
 
@@ -3405,6 +3157,10 @@ LGALS9 <- grid.arrange(b, a, widths = c(0.4, 2), nrow= 1, ncol = 2,
 
 # t test
 t.test(subset(a$data, time == "3" & cell.type =="NKs")$LGALS9,
+       subset(b$data, cell.type =="NKs")$LGALS9,
+       alternative = "two.sided", paired = F, var.equal = T)
+
+t.test(subset(a$data, time == "28" & cell.type =="NKs")$LGALS9,
        subset(b$data, cell.type =="NKs")$LGALS9,
        alternative = "two.sided", paired = F, var.equal = T)
 
@@ -3532,6 +3288,23 @@ t.test(subset(a$data, time == "3" & cell.type =="Memory B cells")$IFIT3,
        subset(b$data, cell.type =="Memory B cells")$IFIT3,
        alternative = "two.sided", paired = F, var.equal = T)
 
+t.test(subset(a$data, time == "28" & cell.type =="NKs")$IFIT3,
+       subset(b$data, cell.type =="NKs")$IFIT3,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="Cytotoxic CD8 T cells")$IFIT3,
+       subset(b$data, cell.type =="Cytotoxic CD8 T cells")$IFIT3,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="Naive B cells")$IFIT3,
+       subset(b$data, cell.type =="Naive B cells")$IFIT3,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="Naive T cells")$IFIT3,
+       subset(b$data, cell.type =="Naive T cells")$IFIT3,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="Memory B cells")$IFIT3,
+       subset(b$data, cell.type =="Memory B cells")$IFIT3,
+       alternative = "two.sided", paired = F, var.equal = T)
+
+
 # for IRF7 ####
 
 # define cell type colors 
@@ -3635,6 +3408,13 @@ t.test(subset(a$data, time == "3" & cell.type =="Activated CD4 T cells")$IRF7,
        subset(b$data, cell.type =="Activated CD4 T cells")$IRF7,
        alternative = "two.sided", paired = F, var.equal = T)
 
+t.test(subset(a$data, time == "28" & cell.type =="NKs")$IRF7,
+       subset(b$data, cell.type =="NKs")$IRF7,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="Activated CD4 T cells")$IRF7,
+       subset(b$data, cell.type =="Activated CD4 T cells")$IRF7,
+       alternative = "two.sided", paired = F, var.equal = T)
+
 # for IFI27 ####
 
 # define cell type colors 
@@ -3731,6 +3511,142 @@ t.test(subset(a$data, time == "7" & cell.type =="Plasma")$IFI27,
        subset(b$data, cell.type =="Plasma")$IFI27,
        alternative = "two.sided", paired = F, var.equal = T)
 
+t.test(subset(a$data, time == "28" & cell.type =="Plasma")$IFI27,
+       subset(b$data, cell.type =="Plasma")$IFI27,
+       alternative = "two.sided", paired = F, var.equal = T)
+
+# for XAF1 ####
+
+# define cell type colors 
+cell_colors <- c(#"Activated CD4 T cells" = "#88CCEE",
+  #"Cylcing T cells" = "#CC6677",
+  "Cytotoxic CD8 T cells" = "#DDCC77",
+  "Naive B cells" = "#117733",
+  "Naive T cells" = "#332288",
+  "NKs" = "#AA4499"#,
+  #"Memory B cells" = "#6699EF"#,
+  #"Plasma"= "#44AA99"#,
+  # "XCL+ NKs" = "#999933",
+  # "DCs" = "#882255",
+  # "Megakaryocytes" = "#661100",
+  # "Stem cells" = "#6699CC"
+)
+
+by.type <-as.data.frame(t(covid.masigpro[covid.genes,]))
+by.type <- by.type[,order(colnames(by.type))]
+by.type$cell.type <- exp.data$cell.type
+by.type$time <- exp.data$time
+by.type <- by.type[by.type$cell.type %in% c(
+  "Cytotoxic CD8 T cells",
+  "Naive B cells",
+  "Naive T cells",
+  "NKs"
+  
+), ]
+
+covid.pb.controls1.sig.genes <- covid.pb.controls1[rownames(covid.pb.controls1) %in% covid.genes,]
+covid.pb.controls1.sig.genes <- t(covid.pb.controls1.sig.genes)
+covid.pb.controls1.sig.genes <- covid.pb.controls1.sig.genes[,order(colnames(covid.pb.controls1.sig.genes))]
+covid.pb.controls1.sig.genes <- data.frame(cell.type = rownames(covid.pb.controls1.sig.genes), covid.pb.controls1.sig.genes)
+covid.pb.controls1.sig.genes[,16] <- rep("Baseline", times = 15)
+colnames(covid.pb.controls1.sig.genes)[16] = "time"
+rownames(covid.pb.controls1.sig.genes) <- paste("Ctrl", 1:15, sep = ".")
+covid.pb.controls1.sig.genes <- covid.pb.controls1.sig.genes[covid.pb.controls1.sig.genes$cell.type %in% c(
+  
+  "Cytotoxic CD8 T cells",
+  "Naive B cells",
+  "Naive T cells",
+  "NKs"
+), ]
+
+covid.pb.controls2.sig.genes <- covid.pb.controls2[rownames(covid.pb.controls2) %in% covid.genes,]
+covid.pb.controls2.sig.genes <- t(covid.pb.controls2.sig.genes)
+covid.pb.controls2.sig.genes <- covid.pb.controls2.sig.genes[,order(colnames(covid.pb.controls2.sig.genes))]
+covid.pb.controls2.sig.genes <- data.frame(cell.type = rownames(covid.pb.controls2.sig.genes), covid.pb.controls2.sig.genes)
+covid.pb.controls2.sig.genes[,16] <- rep("Baseline", times = 15)
+colnames(covid.pb.controls2.sig.genes)[16] = "time"
+rownames(covid.pb.controls2.sig.genes) <- paste("Ctrl", 1:15, sep = ".")
+covid.pb.controls2.sig.genes <- covid.pb.controls2.sig.genes[covid.pb.controls2.sig.genes$cell.type %in% c(
+  
+  "Cytotoxic CD8 T cells",
+  "Naive B cells",
+  "Naive T cells",
+  "NKs"
+), ]
+
+covid.pb.controls3.sig.genes <- covid.pb.controls3[rownames(covid.pb.controls3) %in% covid.genes,]
+covid.pb.controls3.sig.genes <- t(covid.pb.controls3.sig.genes)
+covid.pb.controls3.sig.genes <- covid.pb.controls3.sig.genes[,order(colnames(covid.pb.controls3.sig.genes))]
+covid.pb.controls3.sig.genes <- data.frame(cell.type = rownames(covid.pb.controls3.sig.genes), covid.pb.controls3.sig.genes)
+covid.pb.controls3.sig.genes[,16] <- rep("Baseline", times = 15)
+colnames(covid.pb.controls3.sig.genes)[16] = "time"
+rownames(covid.pb.controls3.sig.genes) <- paste("Ctrl", 1:15, sep = ".")
+covid.pb.controls3.sig.genes <- covid.pb.controls3.sig.genes[covid.pb.controls3.sig.genes$cell.type %in% c(
+  
+  "Cytotoxic CD8 T cells",
+  "Naive B cells",
+  "Naive T cells",
+  "NKs"
+), ]
+
+covid.pb.controls.sig.genes <- rbind(covid.pb.controls1.sig.genes,
+                                     covid.pb.controls2.sig.genes, 
+                                     covid.pb.controls3.sig.genes)
+
+a <-ggplot(by.type, aes(x = time, y = XAF1, 
+                        color= cell.type))+
+  geom_point(size=2)+
+  ylab("") + xlab("Days Since Symptom Onset")+labs(fill="Cell Type")+
+  scale_color_manual(values = cell_colors)+
+  stat_smooth(method = "lm", formula = y ~ x + I(x^2), size = 1, se= F)+
+  scale_x_continuous(n.breaks = 10)+
+  theme(legend.position = "none",
+        axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks = element_blank(),
+        plot.margin = unit(c(1,1,1,-1.75), "mm"))+
+  scale_y_continuous(limits = c(-.1,max(by.type$XAF1, covid.pb.controls.sig.genes$XAF1)),labels = scales::number_format(accuracy = 0.01))
+
+b <-ggplot(covid.pb.controls.sig.genes, aes(x = time, y = XAF1, color= cell.type))+
+  geom_point(size=2)+
+  ylab("XAF1 Expression") + xlab("")+labs(fill="Cell Type")+
+  scale_color_manual(values = cell_colors)+
+  theme(
+    legend.position = "none",
+    plot.margin = unit(c(1,1,1,1), "mm"))+
+  scale_y_continuous(limits = c(-.1,max(by.type$XAF1,covid.pb.controls.sig.genes$XAF1)),labels = scales::number_format(accuracy = 0.01))
+
+XAF1 <- grid.arrange(b, a, widths = c(0.4, 2), nrow= 1, ncol = 2, 
+                      padding = unit(0, "lines"))
+
+# t test
+t.test(subset(a$data, time == "3" & cell.type =="NKs")$XAF1,
+       subset(b$data, cell.type =="NKs")$XAF1,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "3" & cell.type =="Naive T cells")$XAF1,
+       subset(b$data, cell.type =="Naive T cells")$XAF1,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "3" & cell.type =="Naive B cells")$XAF1,
+       subset(b$data, cell.type =="Naive B cells")$XAF1,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "3" & cell.type =="Cytotoxic CD8 T cells")$XAF1,
+       subset(b$data, cell.type =="Cytotoxic CD8 T cells")$XAF1,
+       alternative = "two.sided", paired = F, var.equal = T)
+
+
+t.test(subset(a$data, time == "28" & cell.type =="NKs")$XAF1,
+       subset(b$data, cell.type =="NKs")$XAF1,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="Naive T cells")$XAF1,
+       subset(b$data, cell.type =="Naive T cells")$XAF1,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="Naive B cells")$XAF1,
+       subset(b$data, cell.type =="Naive B cells")$XAF1,
+       alternative = "two.sided", paired = F, var.equal = T)
+t.test(subset(a$data, time == "28" & cell.type =="Cytotoxic CD8 T cells")$XAF1,
+       subset(b$data, cell.type =="Cytotoxic CD8 T cells")$XAF1,
+       alternative = "two.sided", paired = F, var.equal = T)
+
 # for ISG15 ####
 
 # define cell type colors 
@@ -3792,6 +3708,10 @@ ISG15 <- grid.arrange(b, a, widths = c(0.4, 2), nrow= 1, ncol = 2,
 
 # t test
 t.test(subset(a$data, time == "7")$ISG15,
+       subset(b$data)$ISG15,
+       alternative = "two.sided", paired = F, var.equal = T)
+
+t.test(subset(a$data, time == "28")$ISG15,
        subset(b$data)$ISG15,
        alternative = "two.sided", paired = F, var.equal = T)
 
